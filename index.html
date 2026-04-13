@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>3D Product Viewer</title>
+
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <h1 id="title">Pillow Model</h1>
+    <p id="description">A soft and clean 3D pillow scan.</p>
+
+    <model-viewer
+      id="viewer"
+      src="models/pillow_cleaned.glb"
+      camera-controls
+      auto-rotate
+      shadow-intensity="1"
+      exposure="1"
+    ></model-viewer>
+
+    <div class="gallery">
+      <div class="thumb" id="btnPillow">Pillow</div>
+      <div class="thumb" id="btnShoes">Shoes</div>
+      <div class="thumb" id="btnFlower">Flower</div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

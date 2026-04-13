@@ -1,0 +1,46 @@
+  const models = [
+  {
+    src: "models/pillow_cleaned.glb",
+    title: "Pillow Model",
+    description: "A soft and clean 3D pillow scan."
+  },
+  {
+    src: "models/shoes_cleaned.glb",
+    title: "Shoes Model",
+    description: "A detailed 3D scan of stylish shoes."
+  },
+  {
+    src: "models/flower_cleaned.glb",
+    title: "Flower Model",
+    description: "A realistic 3D flower model."
+  }
+];
+
+function changeModel(index) {
+  const viewer = document.getElementById("viewer");
+  const title = document.getElementById("title");
+  const desc = document.getElementById("description");
+
+  // Force reload
+  viewer.src = "";
+  setTimeout(() => {
+    viewer.src = models[index].src;
+  }, 100);
+
+  // Update text (state change)
+  title.innerText = models[index].title;
+  desc.innerText = models[index].description;
+}
+
+// Event Listeners (required)
+document.getElementById("btnPillow").addEventListener("click", () => {
+  changeModel(0);
+});
+
+document.getElementById("btnShoes").addEventListener("click", () => {
+  changeModel(1);
+});
+
+document.getElementById("btnFlower").addEventListener("click", () => {
+  changeModel(2);
+});
