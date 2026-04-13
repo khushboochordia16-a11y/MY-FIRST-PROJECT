@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>3D Viewer</title>
+
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+
+<body>
+
+<a-scene background="color: #f0f0f0">
+
+  <!-- Camera with movement + look controls -->
+  <a-entity
+    id="camera"
+    camera
+    look-controls
+    wasd-controls
+    position="0 1.6 0">
+  </a-entity>
+
+  <!-- Lights -->
+  <a-light type="ambient" intensity="1"></a-light>
+  <a-light type="directional" position="2 4 2" intensity="0.8"></a-light>
+
+  <!-- Scene (building) -->
+  <a-entity
+    gltf-model="./scene.glb"
+    position="0 0 -3"
+    scale="2 2 2">
+  </a-entity>
+
+  <!-- Pillow inside building -->
+  <a-entity
+    gltf-model="./pillow_cleaned.glb"
+    position="0 0 -3"
+    scale="1 1 1">
+  </a-entity>
+
+</a-scene>
+
+<script>
+  // Scroll zoom (moves camera forward/back)
+  const camera = document.querySelector('#camera');
+  let z = 0;
+
+  window.addEventListener('wheel', (e) => {
+    z += e.deltaY * 0.01;
+    z = Math.max(-5, Math.min(10, z));
+    camera.setAttribute('position', `0 1.6 ${z}`);
+  });
+</script>
+
+</body>
+</html>
